@@ -1,16 +1,13 @@
-# Start from an official Java 17 runtime
-FROM openjdk:17-jdk-slim
-
-# Set the working directory inside the container
+# Stage 1: Build the application
+FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Copy the built JAR from your machine into the container
-COPY target/app.jar app.jar
-
-
-
-# Expose port 8080 (same as your Spring Boot app)
+# Stage 2: Run the application
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/app.jar app.jar
 EXPOSE 8080
-
-# Run the JAR when the container starts
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
