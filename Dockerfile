@@ -5,7 +5,9 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR from your machine into the container
-COPY target/MembersPortal-1.0-SNAPSHOT.jar app.jar
+COPY app.jar app.jar
+
+
 
 # Expose port 8080 (same as your Spring Boot app)
 EXPOSE 8080
