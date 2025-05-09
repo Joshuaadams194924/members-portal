@@ -2,6 +2,8 @@ package com.membersportal;
 
 
 
+import com.membersportal.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,10 @@ public class UserPageController {
 
     @GetMapping("/new")
     public String showCreateUserForm(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new User()); // ✅ This line uses the import
         return "add-user";
     }
+
 
     @PostMapping
     public String saveUser(@ModelAttribute User user) {

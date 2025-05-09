@@ -1,30 +1,30 @@
 package com.membersportal.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "users")
-public class UserController {
+public class UserRepositoryTest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is required")
     private String name;
 
-    // No-arg constructor
-    public UserController() {}
+    public UserRepositoryTest() {
+        // Default constructor required by JPA
+    }
 
-    // Constructor with name
-    public UserController(String name) {
+    public UserRepositoryTest(String name) {
         this.name = name;
     }
 
-    // ✅ Getters and setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,3 +35,4 @@ public class UserController {
         this.name = name;
     }
 }
+
