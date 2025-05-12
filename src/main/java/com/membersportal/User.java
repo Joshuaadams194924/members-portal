@@ -3,6 +3,7 @@ package com.membersportal;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -11,9 +12,7 @@ public class User {
 
     private String name;
 
-    public User() {
-        // Default constructor required by JPA
-    }
+    public User() {}
 
     public User(String name) {
         this.name = name;
@@ -35,4 +34,3 @@ public class User {
         this.name = name;
     }
 }
-
